@@ -7,10 +7,10 @@ import {
   StyleSheet,
 } from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from '../../constants';
-import { currentLocation } from '../../dummy-data';
+import { CurrentLocation } from '../../dummy-data';
 
 type HomeHeaderProps = {
-  currentLocation: currentLocation;
+  currentLocation: CurrentLocation;
 };
 
 export const HomeHeader = ({ currentLocation }: HomeHeaderProps) => (

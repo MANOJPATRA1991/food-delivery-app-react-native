@@ -10,7 +10,7 @@ export const initialCurrentLocation = {
   },
 };
 
-export const categoryData = [
+export const categoryData: CategoryData[] = [
   {
     id: 1,
     name: 'Rice',
@@ -314,4 +314,5 @@ export const restaurantData = [
   },
 ];
 
-export type currentLocation = typeof initialCurrentLocation;
+export type CurrentLocation = typeof initialCurrentLocation;
+export type CategoryData = { id: number; name: string; icon: any; };
