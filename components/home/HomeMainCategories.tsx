@@ -6,12 +6,12 @@ import {
   FlatList,
 } from 'react-native';
 import { FONTS, SIZES } from '../../constants';
-import { CategoryData } from '../../dummy-data';
+import { CategoryData } from '../../types';
 import { HomeMainCategoryItem } from './HomeMainCategoryItem';
 
 type HomeMainCategoriesProps = {
   categories: CategoryData[];
-  selectedCategory: CategoryData;
+  selectedCategory: CategoryData | null;
   onSelectCategory: (item: CategoryData) => void;
 };
 

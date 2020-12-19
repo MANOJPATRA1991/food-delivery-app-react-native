@@ -7,12 +7,12 @@ import {
   Text,
 } from 'react-native';
 import { COLORS, FONTS, SIZES } from '../../constants';
-import { CategoryData } from '../../dummy-data';
+import { CategoryData } from '../../types';
 import { AppStyles } from '../../AppStyles';
 
 type HomeMainCategoryProps = {
   item: CategoryData;
-  selectedCategory: CategoryData;
+  selectedCategory: CategoryData | null;
   onSelectCategory: (item: CategoryData) => void;
 };
 
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: SIZES.padding,
+    marginRight: SIZES.padding * 2,
     ...AppStyles.shadow,
   },
   item: {

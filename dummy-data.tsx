@@ -1,8 +1,9 @@
 // Dummy Datas
 
 import { icons, images } from "./constants";
+import { CategoryData, CurrentLocation, Restaurant } from "./types";
 
-export const initialCurrentLocation = {
+export const initialCurrentLocation: CurrentLocation = {
   streetName: 'Kuching',
   gps: {
     latitude: 1.5496614931250685,
@@ -68,10 +69,10 @@ export const affordable = 1;
 export const fairPrice = 2;
 export const expensive = 3;
 
-export const restaurantData = [
+export const restaurantData: Restaurant[] = [
   {
     id: 1,
-    name: 'ByProgrammers Burger',
+    name: 'Burger',
     rating: 4.8,
     categories: [5, 7],
     priceRating: affordable,
@@ -114,7 +115,7 @@ export const restaurantData = [
   },
   {
     id: 2,
-    name: 'ByProgrammers Pizza',
+    name: 'Pizza',
     rating: 4.8,
     categories: [2, 4, 6],
     priceRating: expensive,
@@ -166,7 +167,7 @@ export const restaurantData = [
   },
   {
     id: 3,
-    name: 'ByProgrammers Hotdogs',
+    name: 'Hotdogs',
     rating: 4.8,
     categories: [3],
     priceRating: expensive,
@@ -193,7 +194,7 @@ export const restaurantData = [
   },
   {
     id: 4,
-    name: 'ByProgrammers Sushi',
+    name: 'Sushi',
     rating: 4.8,
     categories: [8],
     priceRating: expensive,
@@ -220,7 +221,7 @@ export const restaurantData = [
   },
   {
     id: 5,
-    name: 'ByProgrammers Cuisine',
+    name: 'Cuisine',
     rating: 4.8,
     categories: [1, 2],
     priceRating: affordable,
@@ -271,7 +272,7 @@ export const restaurantData = [
   },
   {
     id: 6,
-    name: 'ByProgrammers Dessets',
+    name: 'Dessets',
     rating: 4.9,
     categories: [9, 10],
     priceRating: affordable,
@@ -314,5 +315,18 @@ export const restaurantData = [
   },
 ];
 
-export type CurrentLocation = typeof initialCurrentLocation;
-export type CategoryData = { id: number; name: string; icon: any; };
+export const categoriesMap: {[key: number]: string} = categoryData.reduce(
+  (categoryMap, category: CategoryData) =>
+    (categoryMap = {
+      ...categoryMap,
+      [category.id]: category.name,
+    }),
+  {},
+);
+
+export const restaurantsWithCategories: Restaurant[] = restaurantData.map((restaurant) => ({
+  ...restaurant,
+  categoryNames: restaurant.categories.map(
+    (category: number) => categoriesMap[category],
+  ),
+}));

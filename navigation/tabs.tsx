@@ -3,7 +3,7 @@ import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home } from '../screens';
 import { COLORS, icons } from '../constants';
-import { ScreenTab } from './types';
+import { ScreenTab } from '../types';
 import { TabBarCustomButtonActive } from '../components/tabs/TabBarCustomButtonActive';
 import { TabBarCustomButton } from '../components/tabs/TabBarCustomButton';
 import { CustomTabBar } from '../components/tabs/CustomTabBar';

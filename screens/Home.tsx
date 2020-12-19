@@ -5,17 +5,35 @@ import {
 } from 'react-native';
 import { HomeHeader } from '../components/home/HomeHeader';
 import { HomeMainCategories } from '../components/home/HomeMainCategories';
+import { HomeRestaurantsList } from '../components/home/HomeRestaurantsList';
 import { COLORS } from '../constants';
-import { CategoryData, categoryData, initialCurrentLocation, restaurantData } from '../dummy-data';
+import { CategoryData, RootTabParamList } from '../types';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import {
+  categoryData,
+  initialCurrentLocation,
+  restaurantsWithCategories,
+} from '../dummy-data';
 
-export const Home = () => {
+type HomeScreenNavigationProp = BottomTabNavigationProp<
+  RootTabParamList,
+  'Home'
+>;
+
+type HomeProps = {
+  navigation: HomeScreenNavigationProp;
+};
+
+export const Home = ({ navigation }: HomeProps) => {
   const [categories, setCategories] = useState(categoryData);
-  const [selectedCategory, setSelectedCategory] = useState<CategoryData>(categories[0]);
-  const [restaurants, setRestaurants] = useState(restaurantData);
+  const [selectedCategory, setSelectedCategory] = useState<CategoryData | null>(null);
+  const [restaurants, setRestaurants] = useState(restaurantsWithCategories);
   const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
 
   function onSelectCategory(category: CategoryData) {
-    let restaurantList = restaurantData.filter(restaurant => restaurant.categories.includes(category.id));
+    const restaurantList = restaurantsWithCategories.filter((restaurant) =>
+      restaurant.categories.includes(category.id),
+    );
     setRestaurants(restaurantList);
     setSelectedCategory(category);
   }
@@ -23,10 +41,19 @@ export const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <HomeHeader currentLocation={currentLocation} />
-      <HomeMainCategories 
-        categories={categories} 
+      <HomeMainCategories
+        categories={categories}
         selectedCategory={selectedCategory}
-        onSelectCategory={(category: CategoryData) => onSelectCategory(category)}
+        onSelectCategory={(category: CategoryData) =>
+          onSelectCategory(category)
+        }
+      />
+      <HomeRestaurantsList
+        restaurants={restaurants}
+        onPress={(item) => navigation.navigate('Restaurant', { 
+          item,
+          currentLocation
+        })}
       />
     </SafeAreaView>
   );
