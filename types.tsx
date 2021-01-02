@@ -1,3 +1,4 @@
+import { LatLng } from 'react-native-maps';
 import { icons } from './constants';
 
 export type RootTabParamList = {
@@ -12,11 +13,9 @@ export interface ScreenTab {
   screenIcon: keyof typeof icons;
 };
 
-export type CurrentLocation = {streetName: string; gps: Location};
+export type CurrentLocation = {streetName: string; gps: LatLng};
 
 export type CategoryData = {id: number; name: string; icon: any};
-
-export type Location = {latitude: number; longitude: number};
 
 export type Courier = {avatar: any; name: string};
 
@@ -38,7 +37,7 @@ export type Restaurant = {
   priceRating: number;
   photo: any;
   duration: string;
-  location: Location;
+  location: LatLng;
   courier: Courier;
   menu: Menu[];
 };
