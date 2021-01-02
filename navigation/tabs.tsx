@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home } from '../screens';
+import { HomeScreen } from '../screens';
 import { COLORS, icons } from '../constants';
 import { ScreenTab } from '../types';
 import { TabBarCustomButtonActive } from '../components/tabs/TabBarCustomButtonActive';
@@ -13,22 +13,22 @@ const Tab = createBottomTabNavigator();
 const screens: ScreenTab[] = [
   {
     screenName: 'Home',
-    screenComponent: Home,
+    screenComponent: HomeScreen,
     screenIcon: 'cutlery',
   },
   {
     screenName: 'Search',
-    screenComponent: Home,
+    screenComponent: HomeScreen,
     screenIcon: 'search',
   },
   {
     screenName: 'Like',
-    screenComponent: Home,
+    screenComponent: HomeScreen,
     screenIcon: 'like',
   },
   {
     screenName: 'User',
-    screenComponent: Home,
+    screenComponent: HomeScreen,
     screenIcon: 'user',
   },
 ];

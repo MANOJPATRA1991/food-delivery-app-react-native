@@ -1,24 +1,23 @@
 import React from 'react';
-import { 
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from 'react-native';
-import { COLORS, FONTS, icons, SIZES } from '../../constants';
-import { CurrentLocation } from '../../types';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {COLORS, FONTS, icons, SIZES} from '../../constants';
 
-type HomeHeaderProps = {
-  currentLocation: CurrentLocation;
+type HeaderProps = {
+  leftIcon: any;
+  rightIcon: any;
+  headerText?: string;
+  leftPress?: Function;
 };
 
-export const HomeHeader = ({ currentLocation }: HomeHeaderProps) => (
+export const Header = ({ leftIcon, rightIcon, headerText, leftPress }: HeaderProps) => (
   <>
     <View style={styles.headerContainer}>
-      <TouchableOpacity style={styles.headerImageContainer}>
+      <TouchableOpacity 
+        style={styles.headerImageContainer}
+        onPress={() => !!leftPress && leftPress()}
+      >
         <Image
-          source={icons.nearby}
+          source={leftIcon}
           resizeMode="contain"
           style={styles.headerImage}
         />
@@ -26,13 +25,13 @@ export const HomeHeader = ({ currentLocation }: HomeHeaderProps) => (
 
       <View style={styles.headerLocationContainer}>
         <View style={styles.headerLocationTextWrapper}>
-          <Text style={{...FONTS.h3}}>{currentLocation.streetName}</Text>
+          <Text style={{...FONTS.h3}}>{headerText}</Text>
         </View>
       </View>
 
       <TouchableOpacity style={styles.headerRightImageContainer}>
         <Image
-          source={icons.basket}
+          source={rightIcon}
           resizeMode="contain"
           style={styles.headerImage}
         />

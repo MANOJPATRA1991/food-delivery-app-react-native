@@ -1,9 +1,9 @@
 import { icons } from './constants';
-import { Restaurant } from './screens';
 
 export type RootTabParamList = {
   Home: undefined;
   Restaurant: { item: Restaurant, currentLocation: CurrentLocation };
+  OrderDelivery: { restaurant: Restaurant | null, currentLocation: CurrentLocation | null };
 };
 
 export interface ScreenTab {
@@ -41,4 +41,11 @@ export type Restaurant = {
   location: Location;
   courier: Courier;
   menu: Menu[];
+};
+
+export type OrderItem = {
+  menuId: number;
+  qty: number;
+  price: number;
+  total: number;
 };

@@ -3,10 +3,9 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import { HomeHeader } from '../components/home/HomeHeader';
 import { HomeMainCategories } from '../components/home/HomeMainCategories';
 import { HomeRestaurantsList } from '../components/home/HomeRestaurantsList';
-import { COLORS } from '../constants';
+import { COLORS, icons } from '../constants';
 import { CategoryData, RootTabParamList } from '../types';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import {
@@ -14,17 +13,18 @@ import {
   initialCurrentLocation,
   restaurantsWithCategories,
 } from '../dummy-data';
+import { Header } from '../components/common/Header';
 
 type HomeScreenNavigationProp = BottomTabNavigationProp<
   RootTabParamList,
   'Home'
 >;
 
-type HomeProps = {
+type HomeScreenProps = {
   navigation: HomeScreenNavigationProp;
 };
 
-export const Home = ({ navigation }: HomeProps) => {
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const [categories, setCategories] = useState(categoryData);
   const [selectedCategory, setSelectedCategory] = useState<CategoryData | null>(null);
   const [restaurants, setRestaurants] = useState(restaurantsWithCategories);
@@ -40,7 +40,11 @@ export const Home = ({ navigation }: HomeProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <HomeHeader currentLocation={currentLocation} />
+      <Header
+        leftIcon={icons.nearby}
+        rightIcon={icons.basket}
+        headerText={currentLocation.streetName}
+      />
       <HomeMainCategories
         categories={categories}
         selectedCategory={selectedCategory}
@@ -50,10 +54,12 @@ export const Home = ({ navigation }: HomeProps) => {
       />
       <HomeRestaurantsList
         restaurants={restaurants}
-        onPress={(item) => navigation.navigate('Restaurant', { 
-          item,
-          currentLocation
-        })}
+        onPress={(item) =>
+          navigation.navigate('Restaurant', {
+            item,
+            currentLocation,
+          })
+        }
       />
     </SafeAreaView>
   );
