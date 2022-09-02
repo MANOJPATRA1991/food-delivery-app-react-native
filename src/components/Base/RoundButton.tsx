@@ -2,12 +2,13 @@ import React from "react";
 import {
   GestureResponderEvent,
   StyleSheet,
-  TouchableOpacity,
   View,
   ViewStyle,
   TextStyle,
+  TouchableWithoutFeedback,
 } from "react-native";
 import ThemedText from "../UI/ThemedText";
+import { COLORS } from "../../../constants/theme";
 
 interface Props {
   label: string;
@@ -23,11 +24,15 @@ const RoundButton: React.FunctionComponent<Props> = ({
   labelStyle,
 }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <View
         style={[
           style.container,
-          { shadowColor: "blue", backgroundColor: "black", borderColor: "black" },
+          {
+            shadowColor: COLORS.primary,
+            backgroundColor: COLORS.primary,
+            borderColor: COLORS.secondary,
+          },
           buttonStyle,
         ]}
       >
@@ -35,7 +40,7 @@ const RoundButton: React.FunctionComponent<Props> = ({
           {label}
         </ThemedText>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -51,6 +56,7 @@ const style: Style = StyleSheet.create<Style>({
     flexDirection: "row",
     padding: 10,
     justifyContent: "center",
+    alignItems: "center",
     borderRadius: 45,
     borderWidth: 1,
     shadowOffset: { width: 0, height: 8 },
@@ -66,8 +72,6 @@ const style: Style = StyleSheet.create<Style>({
   },
   userNameStyle: {
     fontWeight: "bold",
-    paddingTop: 2,
-    paddingBottom: 2,
     fontSize: 16,
   },
 });

@@ -1,106 +1,112 @@
-import React, { useContext } from "react";
-import {
-  Button,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, { useContext, useState } from "react";
+import { ImageBackground, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import RoundButton from "../components/Base/RoundButton";
 import ThemedText from "../components/UI/ThemedText";
 import { AuthContext } from "../context/AuthContext";
-import { StackNavigator } from "../navigation/StackNavigator";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { COLORS } from "../../constants/theme";
 
 const ImagePath = require("../../images/Recraftsoppify_aap_bg_effect.png");
 
 export const Login = () => {
+  const [bottomColorUser, setBottomColorUser] = useState(COLORS.black);
+  const [bottomColorPassword, setBottomColorPassword] = useState(COLORS.black);
+
   const { signIn } = useContext(AuthContext);
 
   return (
     <>
-      <ImageBackground source={ImagePath} style={{ width: "100%", height: "100%" }}>
-        {/* <TouchableOpacity onPress={() => { }}>
-          <MaterialIcon
-            name="arrow-left"
-            size={30}
-            color={theme.textColor}
-            style={style.backIcon}
-          />
-        </TouchableOpacity> */}
+      <ImageBackground
+        source={ImagePath}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
         <ScrollView>
           <View style={style.container}>
             <View style={style.topContainer}>
               <ThemedText styleKey="appColor" style={style.title}>
-                Login
+                Inicio de sesión
               </ThemedText>
             </View>
             <View style={style.childContainer}>
-              <ThemedText style={style.inputLabel} styleKey="inputColor">
-                User
-              </ThemedText>
-            </View>
-            <View style={style.childContainer}>
-              <TextInput
-                style={[style.inputContainer, { borderBottomColor: "black", color: "black" }]}
-                placeholderTextColor="blue"
-                placeholder="placeholder"
-              />
-            </View>
-            <View style={style.childContainer}>
-              <ThemedText style={style.inputLabel} styleKey="inputColor">
-                Password
+              <ThemedText
+                style={[style.inputLabel, { color: bottomColorUser }]}
+                styleKey="inputColor"
+              >
+                Usuario
               </ThemedText>
             </View>
             <View style={style.childContainer}>
               <TextInput
-                style={[style.inputContainer, { borderBottomColor: "black", color: "black" }]}
-                placeholderTextColor="blue"
-                placeholder="placeholder"
-                secureTextEntry={true}
+                style={[
+                  style.inputContainer,
+                  { borderBottomColor: bottomColorUser, color: COLORS.black },
+                ]}
+                onFocus={() => setBottomColorUser(COLORS.primary)}
+                onBlur={() => setBottomColorUser(COLORS.black)}
+                autoCorrect={false}
+                placeholderTextColor={COLORS.darkgray}
+                placeholder="Usuario"
               />
             </View>
             <View style={style.childContainer}>
               <ThemedText
-                style={style.forgotPassword}
-                styleKey="textColor"
-                onPress={() => {
-                  console.log("ji");
-                }}
+                style={[style.inputLabel, { color: bottomColorPassword }]}
+                styleKey="inputColor"
               >
-                Forgot password?
+                Contraseña
               </ThemedText>
             </View>
-            <RoundButton label="LogIn" buttonStyle={{ minWidth: 230 }} onPress={() => signIn()} />
+            <View style={style.childContainer}>
+              <TextInput
+                style={[
+                  style.inputContainer,
+                  { borderBottomColor: bottomColorPassword, color: COLORS.black },
+                ]}
+                onFocus={() => setBottomColorPassword(COLORS.primary)}
+                onBlur={() => setBottomColorPassword(COLORS.black)}
+                placeholderTextColor={COLORS.darkgray}
+                placeholder="Contraseña"
+                secureTextEntry={true}
+              />
+            </View>
+            <View style={{ marginTop: 40 }}></View>
+            <RoundButton
+              label="Ingresar"
+              buttonStyle={{ minWidth: 230 }}
+              labelStyle={{ color: COLORS.lightGray }}
+              onPress={() => signIn()}
+            />
             <View style={style.childContainer}>
               <ThemedText style={style.forgotPassword} styleKey="textColor">
-                labelChoice
+                ¿Olvidaste tu contraseña?
               </ThemedText>
             </View>
-            <View style={style.childContainer}>
+            <View style={[style.childContainer, { marginTop: 20 }]}>
               <View style={[style.iconContainer, { shadowColor: "blue", backgroundColor: "red" }]}>
-                {/* <Icon
+                <Icon
                   name="google"
                   size={30}
-                  color={theme.highlightTextColor}
+                  color="white"
                   style={style.Icon}
                   onPress={() => {
-                    alert("google");
+                    console.log("google");
                   }}
-                /> */}
+                />
               </View>
               <View style={[style.iconContainer, { shadowColor: "blue", backgroundColor: "blue" }]}>
-                {/* <Icon
+                <Icon
                   name="facebook"
                   size={30}
-                  color={theme.highlightTextColor}
-                  style={[style.Icon]}
+                  color="white"
+                  style={style.Icon}
                   onPress={() => {
-                    alert("google");
+                    console.log("facebook");
                   }}
-                /> */}
+                />
               </View>
             </View>
           </View>
@@ -166,14 +172,15 @@ const style = StyleSheet.create({
     borderRadius: 6,
     margin: 12,
     minWidth: 50,
+    height: 50,
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.2,
     elevation: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
   Icon: {
     fontSize: 25,
-    padding: 15,
-    justifyContent: "center",
   },
   backIcon: {
     fontSize: 25,

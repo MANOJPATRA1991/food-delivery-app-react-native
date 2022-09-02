@@ -21,11 +21,11 @@ const screens: ScreenTab[] = [
     screenComponent: SearchScreen,
     screenIcon: "search",
   },
-  {
-    screenName: "Like",
-    screenComponent: HomeScreen,
-    screenIcon: "like",
-  },
+  // {
+  //   screenName: "Like",
+  //   screenComponent: HomeScreen,
+  //   screenIcon: "like",
+  // },
   {
     screenName: "User",
     screenComponent: HomeScreen,
