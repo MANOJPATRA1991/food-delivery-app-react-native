@@ -1,22 +1,17 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { Tabs } from './navigation/tabs';
-import { HomeScreen, RestaurantScreen, OrderDeliveryScreen } from './screens';
-
-const Stack = createStackNavigator();
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthProvider from "./src/context/AuthContext";
+import { Login } from "./src/screens/Login";
+import { Navigator } from "./src/navigation/Navigator";
 
 export const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName={"Home"}
-      >
-        <Stack.Screen name="Home" component={Tabs} />
-        <Stack.Screen name="Restaurant" component={RestaurantScreen} />
-        <Stack.Screen name="OrderDelivery" component={OrderDeliveryScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <AuthProvider>
+        <NavigationContainer>
+          <Navigator />
+        </NavigationContainer>
+      </AuthProvider>
+    </>
   );
 };
