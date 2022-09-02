@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button, SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+
 import { HomeMainCategories } from "../components/home/HomeMainCategories";
 import { HomeRestaurantsList } from "../components/home/HomeRestaurantsList";
 import { COLORS, icons } from "../../constants";
 import { CategoryData, RootTabParamList } from "../../types";
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { categoryData, initialCurrentLocation, restaurantsWithCategories } from "../../dummy-data";
 import { Header } from "../components/common/Header";
 

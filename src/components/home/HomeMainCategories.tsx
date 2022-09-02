@@ -27,8 +27,8 @@ export const HomeMainCategories = ({
 
   return (
     <View style={styles.container}>
-      <Text style={{ ...FONTS.h1 }}>Main</Text>
-      <Text style={{ ...FONTS.h1 }}>Categories</Text>
+      {/* <Text style={{ ...FONTS.h1 }}>Main</Text>
+      <Text style={{ ...FONTS.h1 }}>Categories</Text> */}
 
       <FlatList
         data={categories}

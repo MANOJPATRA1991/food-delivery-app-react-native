@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { ImageBackground, ScrollView, StyleSheet, TextInput, View } from "react-native";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import RoundButton from "../components/Base/RoundButton";
 import ThemedText from "../components/UI/ThemedText";
 import { AuthContext } from "../context/AuthContext";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { COLORS } from "../../constants/theme";
 
 const ImagePath = require("../../images/Recraftsoppify_aap_bg_effect.png");

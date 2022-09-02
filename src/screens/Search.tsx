@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
-import { CategoryData, RootTabParamList } from "../../types";
-import { Button, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Header } from "../components/common/Header";
-import { COLORS, icons, SIZES } from "../../constants";
-import { HomeRestaurantsList } from "../components/home/HomeRestaurantsList";
-import { HomeMainCategories } from "../components/home/HomeMainCategories";
-import { categoryData, initialCurrentLocation, restaurantsWithCategories } from "../../dummy-data";
 import { TextInput } from "react-native-gesture-handler";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { CategoryData, RootTabParamList } from "../../types";
+import { Header } from "../components/common/Header";
+import { COLORS, icons } from "../../constants";
+import { HomeRestaurantsList } from "../components/home/HomeRestaurantsList";
+import { categoryData, initialCurrentLocation, restaurantsWithCategories } from "../../dummy-data";
 
 type SearchScreenNavigationProp = BottomTabNavigationProp<RootTabParamList, "Search">;
 
@@ -32,9 +32,23 @@ const SearchScreen = ({ navigation }: SearchScreenProps) => {
 
   return (
     <>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={style.container}>
         <Header leftIcon={icons.search} rightIcon={null} headerText={"Buscar"} />
-        <View
+        <View style={style.childContainer}>
+          <TextInput
+            style={[
+              style.inputContainer,
+              { borderBottomColor: COLORS.primary, color: COLORS.black },
+            ]}
+            // onFocus={() => setBottomColorUser(COLORS.primary)}
+            // onBlur={() => setBottomColorUser(COLORS.black)}
+            autoCorrect={false}
+            autoFocus
+            placeholderTextColor={COLORS.darkgray}
+            placeholder="Ej. Hot Dogs"
+          />
+        </View>
+        {/* <View
           style={{
             flexDirection: "row",
             marginHorizontal: SIZES.padding * 2,
@@ -52,7 +66,7 @@ const SearchScreen = ({ navigation }: SearchScreenProps) => {
             }}
           />
           <Button title="Search" onPress={() => {}} />
-        </View>
+        </View> */}
         {/* <HomeMainCategories
           categories={categories}
           selectedCategory={selectedCategory}
@@ -72,13 +86,26 @@ const SearchScreen = ({ navigation }: SearchScreenProps) => {
   );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
     backgroundColor: COLORS.lightGray4,
     // paddingHorizontal: SIZES.padding * 2,
   },
+  childContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingLeft: 15,
+    paddingRight: 35,
+  },
+  inputContainer: {
+    height: 40,
+    marginTop: 10,
+    width: "100%",
+    marginBottom: 15,
+    borderBottomWidth: 2,
+    fontSize: 16,
+  },
 });
-
 export { SearchScreen };

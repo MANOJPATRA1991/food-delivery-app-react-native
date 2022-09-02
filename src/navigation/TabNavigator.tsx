@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import { HomeScreen, SearchScreen } from "../screens";
 import { COLORS, icons } from "../../constants";
 import { ScreenTab } from "../../types";
