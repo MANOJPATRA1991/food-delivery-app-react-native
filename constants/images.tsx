@@ -28,6 +28,53 @@ const sushi = require('../assets/images/sushi.jpg');
 const teh_c_peng = require('../assets/images/teh-c-peng.jpg');
 const tomato_pasta = require('../assets/images/tomato-pasta.jpg');
 
+const ChorizoArgentino =require('../assets/images/Chorizos/ChorizoArgentino.jpg');
+const ChorizoMermeladaAji =require('../assets/images/Chorizos/ChorizoMermelada.jpg');
+const ChorizoParrillero =require('../assets/images/Chorizos/ChorizoParrillero.png');
+
+const BifeAncho =require('../assets/images/CortesDeCarne/BifeAncho.jpg');
+const BifeAngosto =require('../assets/images/CortesDeCarne/BifeAngosto.jpg');
+const ComboySteak =require('../assets/images/CortesDeCarne/ComboySteak.jpg');
+const LomoFino =require('../assets/images/CortesDeCarne/LomoFino.jpg');
+const Picaña =require('../assets/images/CortesDeCarne/Picaña.jpg');
+const tomahawk =require('../assets/images/CortesDeCarne/tomahawk.jpg');
+
+const FileteDePezEspada =require('../assets/images/CortesDePescado/FileteDePezEspada.jpg');
+const FileteDeSalmon =require('../assets/images/CortesDePescado/FileteDeSalmonGrillado.jpg');
+const FileteDeTrucha =require('../assets/images/CortesDePescado/FileteDeTrucha.jpg');
+const PulpoALaParrilla =require('../assets/images/CortesDePescado/PulpoALaParrilla.jpg');
+
+const CesarDePollo =require('../assets/images/Ensaladas/CesarConPollo.jpg');
+const AnticuchosDeCorazon =require('../assets/images/Entradas/AnticuchosDeCorazon.jpg');
+const ChampiñonesSalteados =require('../assets/images/Entradas/ChampiñonesSalteados.jpg');
+const MollejasALaParrilla =require('../assets/images/Entradas/MollejasALaParrilla.jpg');
+
+const HamburguesaClasica =require('../assets/images/Hamburguesas/HamburguesaClasica.jpg');
+const HamburguesaParrillera =require('../assets/images/Hamburguesas/HamburguesaParrillera.png');
+const HamburguesaPolloCrispy =require('../assets/images/Hamburguesas/HamburguesaPolloCrispy.jpg');
+const HamburguesaQuesoYTocino =require('../assets/images/Hamburguesas/HamburguesaQuesoYTocino.jpg');
+const HamburguesaTaytafe =require('../assets/images/Hamburguesas/HamburguesaTaytafe.png');
+const HamburguesaTiraAmericana =require('../assets/images/Hamburguesas/HamburguesaTiraAmericana.jpg');
+
+const ParrillaNacional =require('../assets/images/Parrillas/ParrillaNacional.jpg');
+const ParrillaPersonal =require('../assets/images/Parrillas/ParrillaPersonal.jpg');
+const ParrillaTaytaFe =require('../assets/images/Parrillas/ParrillaTaytaFe.png');
+const PechudaDePolloALaParrilla =require('../assets/images/Parrillas/PechudaDePolloALaParrilla.jpg');
+const PechudaDePolloALaParrillaConSalsaDeChampiñones =require('../assets/images/Parrillas/PechudaDePolloALaParrillaConSalsaDeChampiñones.jpg');
+
+const AlitasALaBBQ =require('../assets/images/Piqueos/AlitasALaBBQ.jpg');
+const AlitasBufalo =require('../assets/images/Piqueos/AlitasBufalo.jpg');
+const AlitasDeSauco =require('../assets/images/Piqueos/AlitasDeSauco.jpg');
+const ChanchitoALaBBQ =require('../assets/images/Piqueos/ChanchitoALaBBQ.jpg');
+
+
+const EsferaDeChocolate =require('../assets/images/Postres/EsferaDeChocolate.jpg');
+const Tiramisu =require('../assets/images/Postres/Tiramisu.jpg');
+
+const CaldoDeGallina =require('../assets/images/Sopas/CaldoDeGallina.jpg');
+const DietaDePollo =require('../assets/images/Sopas/DietaDePollo.jpg');
+const SopaWantan =require('../assets/images/Sopas/SopaWantan.jpg');
+
 export default {
   avatar_1,
   avatar_2,
@@ -60,4 +107,43 @@ export default {
   sushi,
   teh_c_peng,
   tomato_pasta,
+
+  ChorizoArgentino,
+  ChorizoMermeladaAji,
+  ChorizoParrillero,
+
+  BifeAncho,
+  BifeAngosto,
+  ComboySteak,
+  LomoFino,
+  Picaña,
+  tomahawk,
+  FileteDePezEspada,
+  FileteDeSalmon,
+  FileteDeTrucha,
+  PulpoALaParrilla,
+  CesarDePollo,
+  AnticuchosDeCorazon,
+  ChampiñonesSalteados,
+  MollejasALaParrilla,
+  HamburguesaClasica,
+  HamburguesaParrillera,
+  HamburguesaPolloCrispy,
+  HamburguesaQuesoYTocino,
+  HamburguesaTaytafe,
+  HamburguesaTiraAmericana,
+  ParrillaNacional,
+  ParrillaPersonal,
+  ParrillaTaytaFe,
+  PechudaDePolloALaParrilla,
+  PechudaDePolloALaParrillaConSalsaDeChampiñones,
+  AlitasALaBBQ,
+  AlitasBufalo,
+  AlitasDeSauco,
+  ChanchitoALaBBQ,
+  EsferaDeChocolate,
+  Tiramisu,
+  CaldoDeGallina,
+  DietaDePollo,
+  SopaWantan,
 };
