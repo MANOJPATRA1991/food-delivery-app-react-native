@@ -13,6 +13,8 @@ type RestaurantFoodInfoProps = {
   orderItems: OrderItem[];
   setOrderItems: (orderItems: OrderItem[]) => void;
   placeOrder: () => void;
+  horizontal: boolean;
+  keyBoardActive: boolean;
 };
 
 export const RestaurantFoodInfo = ({
@@ -20,6 +22,8 @@ export const RestaurantFoodInfo = ({
   orderItems,
   setOrderItems,
   placeOrder,
+  horizontal,
+  keyBoardActive,
 }: RestaurantFoodInfoProps) => {
   const scrollX = new Animated.Value(0);
   const dotPosition = Animated.divide(scrollX, SIZES.width);
@@ -50,10 +54,12 @@ export const RestaurantFoodInfo = ({
 
   const getTotal = () => orderItems.reduce((a, b) => a + (b.total || 0), 0);
 
+  // console.log(restaurant?.menu);
+
   return (
     <>
       <Animated.ScrollView
-        horizontal
+        horizontal={horizontal}
         pagingEnabled
         scrollEventThrottle={16}
         snapToAlignment="center"
@@ -79,7 +85,7 @@ export const RestaurantFoodInfo = ({
               {/* Name and Description */}
               <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>
-                  {item.name} - ${item.price.toFixed(2)}
+                  {item.name} - S/.{item.price.toFixed(2)}
                 </Text>
                 <Text style={{ ...FONTS.body3, textAlign: "center" }}>{item.description}</Text>
               </View>
@@ -94,45 +100,49 @@ export const RestaurantFoodInfo = ({
         ))}
       </Animated.ScrollView>
       <View>
-        <View style={styles.dotContainer}>
-          {restaurant?.menu.map((item: Menu, index: number) => {
-            const opacity = dotPosition.interpolate({
-              inputRange: [index - 1, index, index + 1],
-              outputRange: [0.3, 1, 0.3],
-              extrapolate: "clamp",
-            });
+        {horizontal && (
+          <View style={styles.dotContainer}>
+            {restaurant?.menu.map((item: Menu, index: number) => {
+              const opacity = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [0.3, 1, 0.3],
+                extrapolate: "clamp",
+              });
 
-            const dotSize = dotPosition.interpolate({
-              inputRange: [index - 1, index, index + 1],
-              outputRange: [SIZES.base * 0.8, 10, SIZES.base * 0.8],
-              extrapolate: "clamp",
-            });
+              const dotSize = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [SIZES.base * 0.8, 10, SIZES.base * 0.8],
+                extrapolate: "clamp",
+              });
 
-            const dotColor = dotPosition.interpolate({
-              inputRange: [index - 1, index, index + 1],
-              outputRange: [COLORS.darkgray, COLORS.primary, COLORS.darkgray],
-              extrapolate: "clamp",
-            });
+              const dotColor = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [COLORS.darkgray, COLORS.primary, COLORS.darkgray],
+                extrapolate: "clamp",
+              });
 
-            return (
-              <Animated.View
-                key={`dot-${index}`}
-                style={{
-                  ...styles.dot,
-                  width: dotSize,
-                  height: dotSize,
-                  backgroundColor: dotColor,
-                  opacity: opacity,
-                }}
-              />
-            );
-          })}
-        </View>
-        <RestaurantOrderSection
-          basketCount={getBasketItemCount()}
-          total={getTotal()}
-          placeOrder={() => placeOrder()}
-        />
+              return (
+                <Animated.View
+                  key={`dot-${index}`}
+                  style={{
+                    ...styles.dot,
+                    width: dotSize,
+                    height: dotSize,
+                    backgroundColor: dotColor,
+                    opacity: opacity,
+                  }}
+                />
+              );
+            })}
+          </View>
+        )}
+        {keyBoardActive && (
+          <RestaurantOrderSection
+            basketCount={getBasketItemCount()}
+            total={getTotal()}
+            placeOrder={() => placeOrder()}
+          />
+        )}
         {isIphoneX() && <View style={styles.fillEmptySpace}></View>}
       </View>
     </>

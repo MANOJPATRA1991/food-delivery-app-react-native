@@ -9,6 +9,7 @@ export type RootTabParamList = {
     currentLocation: CurrentLocation | null;
   };
   Search: undefined;
+  Profile: undefined;
 };
 
 export interface ScreenTab {

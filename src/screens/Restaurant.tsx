@@ -3,6 +3,7 @@ import { RouteProp } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 import { Header } from "../components/common/Header";
 import { RestaurantFoodInfo } from "../components/restaurant/RestaurantFoodInfo";
 import { COLORS, icons } from "../../constants";
@@ -24,6 +25,7 @@ export const RestaurantScreen = ({ route, navigation }: RestaurantScreenProps) =
 
   useEffect(() => {
     const { item, currentLocation } = route.params;
+    // console.log("item", item);
     setRestaurant(item);
     setCurrentLocation(currentLocation);
   });
@@ -41,6 +43,8 @@ export const RestaurantScreen = ({ route, navigation }: RestaurantScreenProps) =
         orderItems={orderItems}
         setOrderItems={(items: OrderItem[]) => setOrderItems(items)}
         placeOrder={() => navigation.navigate("OrderDelivery", { restaurant, currentLocation })}
+        horizontal={true}
+        keyBoardActive={true}
       />
     </SafeAreaView>
   );

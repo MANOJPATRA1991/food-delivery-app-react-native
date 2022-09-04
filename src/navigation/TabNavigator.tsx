@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { HomeScreen, SearchScreen } from "../screens";
+import { HomeScreen, SearchScreen, ProfileScreen } from "../screens";
 import { COLORS, icons } from "../../constants";
 import { ScreenTab } from "../../types";
 import { TabBarCustomButtonActive } from "../components/tabs/TabBarCustomButtonActive";
@@ -22,14 +22,9 @@ const screens: ScreenTab[] = [
     screenComponent: SearchScreen,
     screenIcon: "search",
   },
-  // {
-  //   screenName: "Like",
-  //   screenComponent: HomeScreen,
-  //   screenIcon: "like",
-  // },
   {
-    screenName: "User",
-    screenComponent: HomeScreen,
+    screenName: "Profile",
+    screenComponent: ProfileScreen,
     screenIcon: "user",
   },
 ];
@@ -78,7 +73,7 @@ export const Tabs = () => {
 const styles = StyleSheet.create({
   tabBar: {
     borderTopWidth: 0,
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.primary,
     elevation: 0,
   },
 });
