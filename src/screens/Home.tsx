@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
@@ -29,14 +29,23 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     setSelectedCategory(category);
   }
 
+  useEffect(() => {
+    setSelectedCategory({
+      id: 1,
+      name: "Rice",
+      icon: icons.rice_bowl,
+    });
+  }, []);
+
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <Header
+        {/* <Header
           leftIcon={icons.nearby}
           rightIcon={icons.basket}
           headerText={currentLocation.streetName}
-        />
+        /> */}
+        <Header leftIcon={icons.nearby} rightIcon={icons.basket} headerText="Principal" />
         <HomeMainCategories
           categories={categories}
           selectedCategory={selectedCategory}

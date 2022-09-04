@@ -1,7 +1,7 @@
 // Dummy Datas
 
 import { icons, images } from "./constants";
-import { CategoryData, CurrentLocation, Restaurant } from "./types";
+import { CategoryData, CurrentLocation, Restaurant, Menu } from "./types";
 
 export const initialCurrentLocation: CurrentLocation = {
   streetName: "Kuching",
@@ -74,7 +74,7 @@ export const restaurantData: Restaurant[] = [
     id: 1,
     name: "Burger",
     rating: 4.8,
-    categories: [5, 7],
+    categories: [5],
     priceRating: affordable,
     photo: images.burger_restaurant_1,
     duration: "30 - 45 min",
@@ -327,3 +327,28 @@ export const restaurantsWithCategories: Restaurant[] = restaurantData.map(restau
   ...restaurant,
   categoryNames: restaurant.categories.map((category: number) => categoriesMap[category]),
 }));
+
+const getAllMenu = () => {
+  const rrr: Menu[] = [];
+  restaurantData.map((res: Restaurant) => res.menu.map((m: Menu) => rrr.push(m)));
+  return rrr;
+};
+
+export const allMenu = {
+  id: 1,
+  name: "All",
+  rating: 4.8,
+  categories: [5],
+  priceRating: affordable,
+  photo: images.burger_restaurant_1,
+  duration: "30 - 45 min",
+  location: {
+    latitude: 1.5347282806345879,
+    longitude: 110.35632207358996,
+  },
+  courier: {
+    avatar: images.avatar_1,
+    name: "Amy",
+  },
+  menu: getAllMenu(),
+};

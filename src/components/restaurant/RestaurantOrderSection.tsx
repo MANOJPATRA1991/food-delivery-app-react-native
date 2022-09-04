@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { COLORS, FONTS, icons, SIZES } from "../../../constants";
 
 type RestaurantOrderSectionProps = {
@@ -17,13 +18,13 @@ export const RestaurantOrderSection = ({
   return total > 0 ? (
     <View style={styles.container}>
       <View style={styles.amountDetailsContainer}>
-        <Text style={{ ...FONTS.h3 }}>{basketCount} items in cart</Text>
-        <Text style={{ ...FONTS.h3 }}>${total.toFixed(2)}</Text>
+        <Text style={{ ...FONTS.h3 }}>{basketCount} pedidos</Text>
+        <Text style={{ ...FONTS.h3 }}>S/.{total.toFixed(2)}</Text>
       </View>
       <View style={styles.cardDetailsContainer}>
         <View style={{ flexDirection: "row" }}>
           <Image source={icons.pin} resizeMode="contain" style={styles.image} />
-          <Text style={styles.text}>Location</Text>
+          <Text style={styles.text}>Dirección</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
           <Image source={icons.master_card} resizeMode="contain" style={styles.image} />
@@ -41,7 +42,7 @@ export const RestaurantOrderSection = ({
           disabled={total <= 0}
           onPress={() => placeOrder()}
         >
-          <Text style={styles.orderButtonText}>Order</Text>
+          <Text style={styles.orderButtonText}>Ordenar</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   amountDetailsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: SIZES.padding * 2,
+    paddingVertical: SIZES.padding * 1,
     paddingHorizontal: SIZES.padding * 3,
     borderBottomColor: COLORS.lightGray2,
     borderBottomWidth: 1,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   cardDetailsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: SIZES.padding * 2,
+    paddingVertical: SIZES.padding * 1,
     paddingHorizontal: SIZES.padding * 3,
   },
   image: {
@@ -78,13 +79,13 @@ const styles = StyleSheet.create({
     ...FONTS.h4,
   },
   orderButtonContainer: {
-    padding: SIZES.padding * 2,
+    padding: SIZES.padding * 1,
     alignItems: "center",
     justifyContent: "center",
   },
   orderButton: {
     width: SIZES.width * 0.85,
-    height: 60,
+    height: 40,
     padding: SIZES.padding,
     backgroundColor: COLORS.primary,
     alignItems: "center",
